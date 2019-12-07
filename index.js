@@ -7,7 +7,7 @@ const Event = require("./event/model");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const corsMiddleware = cors();
-const bodyParserMiddleware = bodyParser();
+const bodyParserMiddleware = bodyParser.json();
 const eventRouter = require("./event/router");
 app.use(corsMiddleware);
 app.use(bodyParserMiddleware);
