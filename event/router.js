@@ -17,7 +17,8 @@ router.get("/event/:id", (req, res, next) => {
     .then(event => res.send(event))
     .catch(error => next(error));
 });
-router.put("/event/:id", (req, res, next) => {
+router.patch("/event/:id", (req, res, next) => {
+  //it was put
   Event.findByPk(req.params.id)
     .then(event => event.update(req.body))
     .then(updEvent => res.send(updEvent))
@@ -25,7 +26,7 @@ router.put("/event/:id", (req, res, next) => {
 });
 router.delete("/event/:id", (req, res, next) => {
   Event.destroy({ where: { id: req.params.id } })
-    .then(number => res.send({ number })) //why do we put number in {}?
+    .then(number => res.send({ number })) //why do we put number in {}? What number it is? It seems that it is a quantity of deleted rows but not the row id
     .catch(next);
 });
 
